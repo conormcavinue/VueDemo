@@ -3,4 +3,6 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
-/js/vue.js
+/includes/js/vue.js
+/includes/js/materialize.js
+/includes/css/materialize.min.css
