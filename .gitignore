@@ -5,4 +5,5 @@
 /node_modules/
 /includes/js/vue.js
 /includes/js/materialize.js
+/includes/js/validate.js
 /includes/css/materialize.min.css

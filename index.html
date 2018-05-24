@@ -1,13 +1,17 @@
 <html>
     <head>
-
-
-
+        <link rel="stylesheet" href="/vuedemo/includes/css/materialize.min.css" type="text/css" />
     </head>
     <body>
         <div id="app">
-            <p>{{ a }}</p>
-            <span v-if="test">This is a span</span>
+            <p>{{ urlKey }}</p>
+            <ol v-if="displayList">
+                <family-member v-for="p in people" v-bind:person="p"></family-member>
+            </ol>
+            <button v-on:click="cycleUrls">Cycle URLs</button>
+            <p> {{ htmlText }}</p>
+            <p v-html="htmlText"></p>
+            <a v-bind:href="url">This is a link</a>
         </div>
         <script src="includes/js/vue.js"></script>
         <script src="includes/js/main.js"></script>
