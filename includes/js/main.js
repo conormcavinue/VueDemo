@@ -1,3 +1,9 @@
+Vue.component('family-member', {
+    props: ['person'],
+    template: "<li>{{ person.name}} : {{ person.age }} : Test</li>"
+});
+
+
 var vm = new Vue({
     el: '#app',
     data: {
@@ -16,7 +22,8 @@ var vm = new Vue({
             "http://www.irishtimes.com",
             "http://www.planetrugby.com"
         ],
-        htmlText: "<span style='color: red'>This is a red span</span>"
+        htmlText: "<span>This is a red span</span>",
+
 
     },
 
@@ -24,9 +31,18 @@ var vm = new Vue({
         this.url = this.urls[this.urlKey];
     },
 
-    watch: {
-        urlKey: function() {
-            this.url = this.urls[this.urlKey];
+    computed: {
+        url: function() {
+            return this.urls[this.urlKey];
+        },
+
+        classObject: function() {
+            return {
+                'red-text': this.urlKey === 0,
+                'yellow-text': this.urlKey === 1,
+                'green-text': this.urlKey === 2,
+                'blue-text': this.urlKey === 3
+            }
         }
     },
 
@@ -46,7 +62,3 @@ var vm = new Vue({
 
 });
 
-Vue.component('family-member', {
-    props: ['person'],
-    template: "<li>{{ person.name}} : {{ person.age }} : Test</li>"
-});

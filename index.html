@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="/vuedemo/includes/css/materialize.min.css" type="text/css" />
+        <link rel="stylesheet" href="/vuedemo/includes/css/main.css" type="text/css" />
     </head>
     <body>
         <div id="app">
@@ -9,8 +10,7 @@
                 <family-member v-for="p in people" v-bind:person="p"></family-member>
             </ol>
             <button v-on:click="cycleUrls">Cycle URLs</button>
-            <p> {{ htmlText }}</p>
-            <p v-html="htmlText"></p>
+            <p v-bind:class="classObject">This is a test</p>
             <a v-bind:href="url">This is a link</a>
         </div>
         <script src="includes/js/vue.js"></script>
