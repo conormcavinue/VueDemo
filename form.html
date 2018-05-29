@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/vuedemo/includes/css/materialize.min.css" type="text/css" />
+        <link rel="stylesheet" href="/vuedemo/includes/css/main.css" type="text/css" />
+        <link href="http://vjs.zencdn.net/5.7.1/video-js.css" rel="stylesheet">
+
+    <!-- If you'd like to support IE8 -->
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div class="container">
+                <form v-on:keyup.enter="addUser">
+                    <div class="row">
+                        <div class="col s6">
+                            <input id="first_name" type="text" class="validate" v-model="firstName">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="col s6">
+                            <input id="last_name" type="text" class="validate" v-model="lastName">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="email" id="email" class="validate" v-model="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <input type="text" id="address" class="validate" v-model="address">
+                            <Label for="address">Address</Label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="center-align col s12">
+                            <button type="button" class="btn" v-on:click="addUser">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <person v-if="people.length" v-for="person in people" v-bind="person"></person>
+                <video v-for="video in videos" v-bind:src="video"></video>
+            </div>
+        </div>
+        <script src="includes/js/vue.js"></script>
+        <script src="includes/js/vuelidate.js"></script>
+        <script src="includes/js/validators.js"></script>
+        <script src="includes/js/jquery.js"></script>
+        <script src="includes/js/formMain.js"></script>
+    </body>
+</html>

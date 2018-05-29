@@ -9,11 +9,13 @@
             <ol v-if="displayList">
                 <family-member v-for="p in people" v-bind:person="p"></family-member>
             </ol>
-            <button v-on:click="cycleUrls">Cycle URLs</button>
+            <button v-bind:class="buttonClass" v-on:click="cycleUrls">Cycle URLs</button>
             <p v-bind:class="classObject">This is a test</p>
-            <a v-bind:href="url">This is a link</a>
+            <a v-bind:href="url">{{ url }}</a>
+            <input type="text" v-on:keyup.enter="sendText" v-model="alertText" placeholder="Enter some text to alert">
         </div>
         <script src="includes/js/vue.js"></script>
         <script src="includes/js/main.js"></script>
+        <script src="includes/js/validate.js"></script>
     </body>
 </html>
