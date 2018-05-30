@@ -15,7 +15,9 @@ var vm = new Vue({
         firstName: '',
         lastName: '',
         email: '',
-        address: ''
+        address: '',
+        todos: '',
+        listIndex: 0
     },
 
     methods: {
@@ -26,6 +28,33 @@ var vm = new Vue({
                 email: this.email,
                 address: this.address
             });
+        },
+
+        async getTodos() {
+            axios.get('http://jsonplaceholder.typicode.com/todos')
+                .then(function (response) {
+                    vm.todos = response.data;
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+        },
+
+        cycleTodos: function() {
+            vm.listIndex += 10;
+        }
+    },
+
+    created() {
+       this.getTodos();
+    },
+
+    filters: {
+        paginate: function(value) {
+            var index = value.id;
+            if(index >= vm.listIndex && index <= (vm.listIndex + 10) ) {
+                return value.title;
+            }
         }
     }
 });

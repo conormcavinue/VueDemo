@@ -35,14 +35,18 @@
                     </div>
                     <div class="row">
                         <div class="center-align col s12">
-                            <button type="button" class="btn" v-on:click="addUser">Submit</button>
+                            <button type="button" class="btn" v-on:click="cycleTodos">Change List</button>
                         </div>
                     </div>
                 </form>
                 <person v-if="people.length" v-for="person in people" v-bind="person"></person>
+                <ul>
+                    <li v-for="(todo, key, index) in todos" v-if="(key >= listIndex) && (key < (listIndex + 10)) ">{{ todo | paginate }}</li>
+                </ul>
             </div>
         </div>
         <script src="includes/js/vue.js"></script>
+        <script src="includes/js/axios.js"></script>
         <script src="includes/js/vuelidate.js"></script>
         <script src="includes/js/validators.js"></script>
         <script src="includes/js/jquery.js"></script>
