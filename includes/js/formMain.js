@@ -17,7 +17,8 @@ var vm = new Vue({
         email: '',
         address: '',
         todos: '',
-        listIndex: 0
+        listIndex: 0,
+        listCount: 0
     },
 
     methods: {
@@ -34,6 +35,7 @@ var vm = new Vue({
             axios.get('http://jsonplaceholder.typicode.com/todos')
                 .then(function (response) {
                     vm.todos = response.data;
+                    vm.listCount = response.data.length;
                 })
                 .catch(function (error) {
                     alert(error);
@@ -41,7 +43,11 @@ var vm = new Vue({
         },
 
         cycleTodos: function() {
-            vm.listIndex += 10;
+            if(vm.listIndex < vm.listCount - 10) {
+                vm.listIndex += 15;
+            } else {
+                vm.listIndex = 0;
+            }
         }
     },
 
@@ -52,7 +58,7 @@ var vm = new Vue({
     filters: {
         paginate: function(value) {
             var index = value.id;
-            if(index >= vm.listIndex && index <= (vm.listIndex + 10) ) {
+            if(index >= vm.listIndex && index <= (vm.listIndex + 15) ) {
                 return value.title;
             }
         }

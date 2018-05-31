@@ -41,7 +41,7 @@
                 </form>
                 <person v-if="people.length" v-for="person in people" v-bind="person"></person>
                 <ul>
-                    <li v-for="(todo, key, index) in todos" v-if="(key >= listIndex) && (key < (listIndex + 10)) ">{{ todo | paginate }}</li>
+                    <li v-for="(todo, key, index) in todos" v-if="(key >= listIndex) && (key < (listIndex + 15)) ">{{ key+1 }}: {{ todo | paginate }}</li>
                 </ul>
             </div>
         </div>
